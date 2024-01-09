@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')
+    }}"
+    />
+    <title>Nutrition</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Nutrition</a>
+      <nav class="navbar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('workouts') }}">Workouts</a>
+        <a href="{{ url_for('exercise_library') }}">Exercises</a>
+        <a href="{{ url_for('progress') }}">Track Progress</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </header>
+    <div class="recipe-container">
+      <h1>Recipes</h1>
+      <div class="recipe-list">
+        {% for recipe in recipes %}
+        <div class="recipe-card">
+          <h2>{{ recipe.name }}</h2>
+          <p>
+            <strong>Ingredients:</strong> {{ ", ".join(recipe.ingredients) }}
+          </p>
+          <p><strong>Nutritional Facts:</strong></p>
+          <ul>
+            <li>Calories: {{ recipe.nutrition.calories }}</li>
+            <li>Carbs: {{ recipe.nutrition.carbs }}g</li>
+            <li>Protein: {{ recipe.nutrition.protein }}g</li>
+            <li>Fat: {{ recipe.nutrition.fat }}g</li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

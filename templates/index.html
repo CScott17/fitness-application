@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')
+    }}"
+    />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div class="landing-page">
+      <h1>Welcome to the Fitness App</h1>
+      <p>Get started on your fitness journey!</p>
+      <div class="buttons">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('register') }}" class="btn">Create Account</a>
+      </div>
+    </div>
+  </body>
+</html>

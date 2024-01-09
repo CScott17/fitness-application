@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')
+    }}"
+    />
+    <title>Workouts</title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Workouts</a>
+      <nav class="navbar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('exercise_library') }}">Exercises</a>
+        <a href="{{ url_for('nutrition') }}">Nutrition</a>
+        <a href="{{ url_for('progress') }}">Track Progress</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </header>
+    <div class="workouts-body">
+      <h2>Today's Workouts:</h2>
+      {% if workout_details %} {% for message in workout_details %}
+      <div class="message">
+        <!-- Display workout details -->
+        <p>Exercise: {{ message.exercise }}</p>
+        <p>Sets: {{ message.sets }}</p>
+        <p>Reps: {{ message.reps }}</p>
+        <p>Rest Time: {{ message.rest }} seconds</p>
+        <p>Message: {{ message.message }}</p>
+      </div>
+      {% endfor %}
+      <form method="post">
+        <input type="submit" name="clear_workouts" value="Finished Workout" />
+      </form>
+      {% else %}
+      <p>No workout information available!</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

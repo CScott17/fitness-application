@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')
+    }}"
+    />
+    <title>Progress</title>
+    
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Progress</a>
+      <nav class="navbar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('exercise_library') }}">Exercises</a>
+        <a href="{{ url_for('workouts') }}">Workouts</a>
+        <a href="{{ url_for('nutrition') }}">Nutrition</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </header>
+    <body>
+      <h1>User's Weight Progress</h1>
+      <form method="POST" action="/save_progress">
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight">
+
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date">
+
+        <input type="submit" value="Submit">
+    </form>
+      <div>
+        <!-- This is where the chart will be displayed -->
+        <img src="data:image/png;base64,{{ chart_url }}" alt="User Weight Progress" class="chart-img">
+    </div>
+  </body>
+  
+</html>
